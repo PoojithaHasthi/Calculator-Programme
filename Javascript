@@ -1,0 +1,25 @@
+//CALCULATOR PROGRAM
+const display=document.getElementById("display");
+function appendToDisplay(input){
+    display.value+=input;
+    display.scrollLeft = display.scrollWidth; // auto-scroll to right
+
+}
+function clearDisplay(){
+    display.value="";
+}
+function calculate(){
+    try{
+        display.value=eval(display.value);
+        //The eval() function evaluates a string of JavaScript code and executes it.
+        //⚠️ Warning: Avoid using eval() in real-world apps.It can execute malicious code if user input is passed to it.
+        // It's slow and insecure.Modern developers prefer safe alternatives like Function, or parsing logic with math libraries.
+        //If you're making a calculator only for yourself or in a controlled environment, eval() can be okay. But in a production app, avoid it.
+    }
+    catch(error){
+        display.value="Error";
+    }
+}
+function backspace() {
+    display.value = display.value.slice(0, -1);
+}
